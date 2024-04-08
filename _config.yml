@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Home/About"
 title_separator          : "-"
 name                     : &name "Markos Diomataris"
 description              : &description "PhD student @ETH/Max Planck Center for Learning Systems"
