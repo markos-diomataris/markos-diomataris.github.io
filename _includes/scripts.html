@@ -1,4 +1,41 @@
 <script src="{{ base_path }}/assets/js/main.min.js"></script>
 
+<!-- Publication Video Auto-play Script -->
+<script>
+// Auto-play videos when they come into view
+document.addEventListener('DOMContentLoaded', function() {
+  const videos = document.querySelectorAll('.publication__video-player');
+  
+  videos.forEach(video => {
+    // Try to play the video immediately
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        console.log('Video autoplay started');
+      }).catch(error => {
+        console.log('Video autoplay prevented, adding click handler');
+        
+        // Add click handler to play when user clicks
+        video.addEventListener('click', () => {
+          video.play();
+        });
+        
+        // Add hover handler as backup
+        video.addEventListener('mouseenter', () => {
+          video.play();
+        });
+      });
+    }
+    
+    // Ensure video loops properly
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      video.play();
+    });
+  });
+});
+</script>
+
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

@@ -1,11 +1,12 @@
 ---
-title: "WANDR"
+title: "WANDR: Goal-Reaching Human Motion Generation"
 collection: publications
 permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'Generation of Human Avatar motion that reaches goals in space'
+excerpt: 'WANDR is a conditional Variational AutoEncoder (c-VAE) that generates realistic motion of human avatars that navigate towards an arbitrary goal location and reach for it. Input to our method is the initial pose of the avatar, the goal location, and the desired motion duration. Output is a sequence of poses that guide the avatar from the initial pose to the goal location and place the wrist on it.'
 date: 2009-10-01
 venue: 'CVPR 2024'
 paperurl: 'https://wandr.is.tue.mpg.de/'
+video: '/files/branching_motion.mp4'
 # citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
 

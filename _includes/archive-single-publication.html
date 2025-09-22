@@ -1,0 +1,142 @@
+{% include base_path %}
+
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="{{ include.type | default: "list" }}__item publication__item">
+  <article class="archive__item publication__article" itemscope itemtype="http://schema.org/ScholarlyArticle">
+    
+    <!-- Publication thumbnail/image -->
+    {% if post.image %}
+      <div class="publication__image">
+        <img src=
+          {% if post.image contains "://" %}
+            "{{ post.image }}"
+          {% else %}
+            "{{ post.image | prepend: "/images/" | prepend: base_path }}"
+          {% endif %}
+          alt="{{ post.title }}" class="publication__thumbnail">
+      </div>
+    {% endif %}
+
+    <div class="publication__content">
+      <h2 class="archive__item-title publication__title" itemprop="headline">
+        {% if post.link %}
+          <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+        {% else %}
+          <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        {% endif %}
+      </h2>
+
+      <!-- Video and Description Side by Side -->
+      {% if post.video or post.excerpt %}
+        <div class="publication__media-content">
+          {% if post.video %}
+            <div class="publication__video">
+              <video autoplay muted loop playsinline preload="auto" class="publication__video-player" onloadstart="this.play()" oncanplay="this.play()">
+                <source src=
+                  {% if post.video contains "://" %}
+                    "{{ post.video }}"
+                  {% else %}
+                    "{{ post.video | prepend: base_path }}"
+                  {% endif %}
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          {% endif %}
+          
+          {% if post.excerpt %}
+            <div class="publication__description">
+              <div class="publication__excerpt">
+                {{ post.excerpt | markdownify }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- Authors -->
+      {% if post.authors %}
+        <p class="publication__authors">
+          <i class="fas fa-users" aria-hidden="true"></i>
+          {{ post.authors }}
+        </p>
+      {% endif %}
+
+      <!-- Venue and Date -->
+      <div class="publication__meta">
+        {% if post.venue %}
+          <span class="publication__venue">
+            <i class="fas fa-university" aria-hidden="true"></i>
+            <em>{{ post.venue }}</em>
+          </span>
+        {% endif %}
+        {% if post.date %}
+          <span class="publication__date">
+            <i class="fas fa-calendar" aria-hidden="true"></i>
+            {{ post.date | date: "%Y" }}
+          </span>
+        {% endif %}
+      </div>
+
+      <!-- Publication Type Badge -->
+      {% if post.pub_type %}
+        <span class="publication__type-badge publication__type-{{ post.pub_type | slugify }}">
+          {{ post.pub_type }}
+        </span>
+      {% endif %}
+
+      <!-- Links -->
+      <div class="publication__links">
+        {% if post.paperurl %}
+          <a href="{{ post.paperurl }}" class="btn btn--primary publication__link">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> PDF
+          </a>
+        {% endif %}
+        
+        {% if post.code_url %}
+          <a href="{{ post.code_url }}" class="btn btn--inverse publication__link">
+            <i class="fab fa-github" aria-hidden="true"></i> Code
+          </a>
+        {% endif %}
+        
+        {% if post.demo_url %}
+          <a href="{{ post.demo_url }}" class="btn btn--info publication__link">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+          </a>
+        {% endif %}
+        
+        {% if post.slides_url %}
+          <a href="{{ post.slides_url }}" class="btn btn--warning publication__link">
+            <i class="fas fa-presentation" aria-hidden="true"></i> Slides
+          </a>
+        {% endif %}
+        
+        {% if post.video_url %}
+          <a href="{{ post.video_url }}" class="btn btn--danger publication__link">
+            <i class="fas fa-video" aria-hidden="true"></i> Video
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Citation -->
+      {% if post.citation %}
+        <details class="publication__citation">
+          <summary>Citation</summary>
+          <pre class="publication__citation-text">{{ post.citation }}</pre>
+        </details>
+      {% endif %}
+    </div>
+
+  </article>
+</div>
