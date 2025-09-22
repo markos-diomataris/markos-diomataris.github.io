@@ -42,28 +42,23 @@ Publications
 
 **2025**
 * **CLOPS: Moving By Looking** (arXiv 2025)
-  * Novel approaches to motion understanding and generation through visual observation
   * *Markos Diomataris*, Berat Mert Albaba, Giorgio Becherini, Partha Ghosh, Omid Taheri, Michael J. Black
 
 * **NIL: No-data Imitation Learning by Leveraging Pre-trained Video Diffusion Models** (arXiv 2025)
-  * Data-independent approach for motor skill acquisition learning 3D motor skills from 2D-generated videos
   * Mert Albaba, Chenhao Li, *Markos Diomataris*, Omid Taheri, Andreas Krause, Michael J. Black
   * [PDF](https://arxiv.org/abs/2503.10626) | [Project Page](https://mertalbaba.github.io/projects/1_nil/)
 
 **2024**
 * **WANDR: Intention-guided Human Motion Generation** (CVPR 2024)
-  * Conditional Variational AutoEncoder generating realistic human motion sequences for avatars reaching arbitrary goal locations
   * *Markos Diomataris*, Nikos Athanasiou, Omid Taheri, Xi Wang, Otmar Hilliges, Michael J Black
   * [PDF](https://arxiv.org/pdf/2404.15383) | [Video](https://youtu.be/9szizM-XUCg?si=B836zQoWTI4I9s61) | [Website](https://wandr.is.tue.mpg.de/)
 
 * **MotionFix: Text-Driven 3D Human Motion Editing** (arXiv 2024)
-  * Advanced motion editing framework for precise human motion modification
   * Nikos Athanasiou, Alpár Ceske, *Markos Diomataris*, Michael J. Black, Gül Varol
   * [PDF](https://arxiv.org/abs/2408.00712) | [Project Page](https://cure-lab.github.io/MotionFix/)
 
 **2021**
 * **Grounding Consistency: Distilling Spatial Common Sense for Precise Visual Relationship Detection** (ICCV 2021)
-  * Combined visual relationship detection with phrase grounding in closed-loop supervision scheme
   * *Markos Diomataris*, Nikolaos Gkanatsios, Vassilis Pitsikalis, Petros Maragos
   * [PDF](https://openaccess.thecvf.com/content/ICCV2021/papers/Diomataris_Grounding_Consistency_Distilling_Spatial_Common_Sense_for_Precise_Visual_Relationship_ICCV_2021_paper.pdf) | [Video](https://www.youtube.com/watch?v=PQ9PH6do9Gc&t=2s) | [Demo](https://deeplab.ai/demo/vrd)
 

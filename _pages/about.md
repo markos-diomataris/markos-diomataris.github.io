@@ -36,7 +36,7 @@ I'm passionate about developing **intelligent virtual humans** and advancing **m
     </div>
     <div class="featured-pub__content">
       <h3 class="featured-pub__title">
-        <a href="{{ pub.url | prepend: base_path }}">{{ pub.title }}</a>
+        {{ pub.title }}
       </h3>
       <p class="featured-pub__venue">{{ pub.venue }}</p>
       <p class="featured-pub__excerpt">{{ pub.excerpt | truncate: 120 }}</p>
