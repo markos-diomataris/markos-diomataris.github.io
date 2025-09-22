@@ -27,6 +27,17 @@
   overflow: hidden;
   border-radius: 8px;
   background: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.featured-pub__media:hover {
+  transform: scale(1.02);
+}
+
+.featured-pub__media a {
+  display: block;
+  text-decoration: none;
 }
 
 .featured-pub__video {

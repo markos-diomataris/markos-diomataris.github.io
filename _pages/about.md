@@ -7,26 +7,32 @@ redirect_from:
   - /about.html
 ---
 
-I'm passionate about developing **intelligent virtual humans** and advancing **motion synthesis** through the intersection of machine learning, computer vision, and robotics. My research focuses on creating more natural and intuitive ways for AI systems to understand, generate, and learn from human motion—bridging the gap between virtual simulations and real-world applications.
+I'm passionate about developing **intelligent virtual humans** and advancing **motion synthesis** through the intersection of machine learning, computer vision, and robotics.
 
 ## Featured Research
+
+<div style="text-align: center; margin-bottom: 2rem;">
+  <a href="{{ '/publications/' | prepend: base_path }}" class="btn btn--large btn--primary">View All Publications</a>
+</div>
 
 <div class="featured-publications">
 {% assign featured_pubs = site.publications | sort: 'date' | reverse | limit: 4 %}
 {% for pub in featured_pubs %}
   <div class="featured-pub">
     <div class="featured-pub__media">
-      {% if pub.video %}
-        {% if pub.video contains '.gif' %}
-          <img src="{{ pub.video | prepend: base_path }}" alt="{{ pub.title }} animation" class="featured-pub__video">
-        {% else %}
-          <video autoplay muted loop playsinline preload="auto" class="featured-pub__video">
-            <source src="{{ pub.video | prepend: base_path }}" type="video/mp4">
-          </video>
+      <a href="{{ pub.url | prepend: base_path }}">
+        {% if pub.video %}
+          {% if pub.video contains '.gif' %}
+            <img src="{{ pub.video | prepend: base_path }}" alt="{{ pub.title }} animation" class="featured-pub__video">
+          {% else %}
+            <video autoplay muted loop playsinline preload="auto" class="featured-pub__video">
+              <source src="{{ pub.video | prepend: base_path }}" type="video/mp4">
+            </video>
+          {% endif %}
+        {% elsif pub.image %}
+          <img src="{{ pub.image | prepend: base_path }}" alt="{{ pub.title }}" class="featured-pub__video">
         {% endif %}
-      {% elsif pub.image %}
-        <img src="{{ pub.image | prepend: base_path }}" alt="{{ pub.title }}" class="featured-pub__video">
-      {% endif %}
+      </a>
     </div>
     <div class="featured-pub__content">
       <h3 class="featured-pub__title">
@@ -45,8 +51,4 @@ I'm passionate about developing **intelligent virtual humans** and advancing **m
     </div>
   </div>
 {% endfor %}
-</div>
-
-<div style="text-align: center; margin-top: 2rem;">
-  <a href="{{ '/publications/' | prepend: base_path }}" class="btn btn--large btn--primary">View All Publications</a>
 </div>
