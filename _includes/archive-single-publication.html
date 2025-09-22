@@ -15,43 +15,46 @@
 <div class="{{ include.type | default: "list" }}__item publication__item">
   <article class="archive__item publication__article" itemscope itemtype="http://schema.org/ScholarlyArticle">
     
-    <!-- Publication thumbnail/image -->
-    {% if post.image %}
-      <div class="publication__image">
-        <img src=
-          {% if post.image contains "://" %}
-            "{{ post.image }}"
-          {% else %}
-            "{{ post.image | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="{{ post.title }}" class="publication__thumbnail">
-      </div>
-    {% endif %}
-
     <div class="publication__content">
       <h2 class="archive__item-title publication__title" itemprop="headline">
-        {% if post.link %}
-          <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-        {% else %}
-          <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-        {% endif %}
+        {{ title }}
       </h2>
 
-      <!-- Video and Description Side by Side -->
-      {% if post.video or post.excerpt %}
+      <!-- Video/Image and Description Side by Side -->
+      {% if post.video or post.image or post.excerpt %}
         <div class="publication__media-content">
           {% if post.video %}
             <div class="publication__video">
-              <video autoplay muted loop playsinline preload="auto" class="publication__video-player" onloadstart="this.play()" oncanplay="this.play()">
-                <source src=
+              {% if post.video contains '.gif' %}
+                <img src=
                   {% if post.video contains "://" %}
                     "{{ post.video }}"
                   {% else %}
                     "{{ post.video | prepend: base_path }}"
                   {% endif %}
-                  type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+                  alt="{{ post.title }} animation" class="publication__video-player publication__gif-player">
+              {% else %}
+                <video autoplay muted loop playsinline preload="auto" class="publication__video-player" onloadstart="this.play()" oncanplay="this.play()">
+                  <source src=
+                    {% if post.video contains "://" %}
+                      "{{ post.video }}"
+                    {% else %}
+                      "{{ post.video | prepend: base_path }}"
+                    {% endif %}
+                    type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              {% endif %}
+            </div>
+          {% elsif post.image %}
+            <div class="publication__video">
+              <img src=
+                {% if post.image contains "://" %}
+                  "{{ post.image }}"
+                {% else %}
+                  "{{ post.image | prepend: base_path }}"
+                {% endif %}
+                alt="{{ post.title }}" class="publication__video-player">
             </div>
           {% endif %}
           
@@ -73,18 +76,12 @@
         </p>
       {% endif %}
 
-      <!-- Venue and Date -->
+      <!-- Venue -->
       <div class="publication__meta">
         {% if post.venue %}
           <span class="publication__venue">
             <i class="fas fa-university" aria-hidden="true"></i>
             <em>{{ post.venue }}</em>
-          </span>
-        {% endif %}
-        {% if post.date %}
-          <span class="publication__date">
-            <i class="fas fa-calendar" aria-hidden="true"></i>
-            {{ post.date | date: "%Y" }}
           </span>
         {% endif %}
       </div>
@@ -98,33 +95,54 @@
 
       <!-- Links -->
       <div class="publication__links">
-        {% if post.paperurl %}
-          <a href="{{ post.paperurl }}" class="btn btn--primary publication__link">
+        <!-- PDF Link -->
+        {% if post.pdf_url %}
+          <a href="{{ post.pdf_url }}" class="btn btn--primary publication__link">
             <i class="fas fa-file-pdf" aria-hidden="true"></i> PDF
           </a>
+        {% elsif post.pdf_coming_soon %}
+          <span class="btn btn--primary publication__link publication__link--disabled">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> PDF (Coming Soon)
+          </span>
         {% endif %}
         
+        <!-- Project Page Link -->
+        {% if post.project_url %}
+          <a href="{{ post.project_url }}" class="btn btn--info publication__link">
+            <i class="fas fa-globe" aria-hidden="true"></i> Project Page
+          </a>
+        {% elsif post.project_coming_soon %}
+          <span class="btn btn--info publication__link publication__link--disabled">
+            <i class="fas fa-globe" aria-hidden="true"></i> Project Page (Coming Soon)
+          </span>
+        {% endif %}
+        
+        <!-- Code Link -->
         {% if post.code_url %}
           <a href="{{ post.code_url }}" class="btn btn--inverse publication__link">
             <i class="fab fa-github" aria-hidden="true"></i> Code
           </a>
+        {% elsif post.code_coming_soon %}
+          <span class="btn btn--inverse publication__link publication__link--disabled">
+            <i class="fab fa-github" aria-hidden="true"></i> Code (Coming Soon)
+          </span>
         {% endif %}
         
-        {% if post.demo_url %}
-          <a href="{{ post.demo_url }}" class="btn btn--info publication__link">
-            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
-          </a>
-        {% endif %}
-        
-        {% if post.slides_url %}
-          <a href="{{ post.slides_url }}" class="btn btn--warning publication__link">
-            <i class="fas fa-presentation" aria-hidden="true"></i> Slides
-          </a>
-        {% endif %}
-        
+        <!-- Video Link -->
         {% if post.video_url %}
           <a href="{{ post.video_url }}" class="btn btn--danger publication__link">
             <i class="fas fa-video" aria-hidden="true"></i> Video
+          </a>
+        {% elsif post.video_coming_soon %}
+          <span class="btn btn--danger publication__link publication__link--disabled">
+            <i class="fas fa-video" aria-hidden="true"></i> Video (Coming Soon)
+          </span>
+        {% endif %}
+
+        <!-- Legacy paperurl support for backward compatibility -->
+        {% if post.paperurl and post.paperurl != post.pdf_url and post.paperurl != post.project_url %}
+          <a href="{{ post.paperurl }}" class="btn btn--primary publication__link">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Link
           </a>
         {% endif %}
       </div>
