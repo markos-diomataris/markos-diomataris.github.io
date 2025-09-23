@@ -20,19 +20,17 @@ I'm passionate about developing **intelligent virtual humans** and advancing **m
 {% for pub in featured_pubs %}
   <div class="featured-pub">
     <div class="featured-pub__media">
-      <a href="{{ pub.url | prepend: base_path }}">
-        {% if pub.video %}
-          {% if pub.video contains '.gif' %}
-            <img src="{{ pub.video | prepend: base_path }}" alt="{{ pub.title }} animation" class="featured-pub__video">
-          {% else %}
-            <video autoplay muted loop playsinline preload="auto" class="featured-pub__video">
-              <source src="{{ pub.video | prepend: base_path }}" type="video/mp4">
-            </video>
-          {% endif %}
-        {% elsif pub.image %}
-          <img src="{{ pub.image | prepend: base_path }}" alt="{{ pub.title }}" class="featured-pub__video">
+      {% if pub.video %}
+        {% if pub.video contains '.gif' %}
+          <img src="{{ pub.video | prepend: base_path }}" alt="{{ pub.title }} animation" class="featured-pub__video">
+        {% else %}
+          <video autoplay muted loop playsinline preload="auto" class="featured-pub__video">
+            <source src="{{ pub.video | prepend: base_path }}" type="video/mp4">
+          </video>
         {% endif %}
-      </a>
+      {% elsif pub.image %}
+        <img src="{{ pub.image | prepend: base_path }}" alt="{{ pub.title }}" class="featured-pub__video">
+      {% endif %}
     </div>
     <div class="featured-pub__content">
       <h3 class="featured-pub__title">

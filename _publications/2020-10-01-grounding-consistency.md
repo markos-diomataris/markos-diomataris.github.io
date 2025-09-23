@@ -7,8 +7,8 @@ venue: 'ICCV 2021'
 authors: '<strong>Markos Diomataris</strong>, Nikolaos Gkanatsios, Vassilis Pitsikalis, Petros Maragos'
 pdf_url: 'http://openaccess.thecvf.com/content/ICCV2021/papers/Diomataris_Grounding_Consistency_Distilling_Spatial_Common_Sense_for_Precise_Visual_Relationship_ICCV_2021_paper.pdf'
 project_url: 'http://openaccess.thecvf.com/content/ICCV2021/html/Diomataris_Grounding_Consistency_Distilling_Spatial_Common_Sense_for_Precise_Visual_Relationship_ICCV_2021_paper.html'
-code_coming_soon: true
-video_coming_soon: true
+code_url: 'https://github.com/deeplab-ai/grounding-consistent-vrd'
+video_url: 'https://www.youtube.com/watch?v=PQ9PH6do9Gc'
 image: '/files/GC.png'
 ---
 
