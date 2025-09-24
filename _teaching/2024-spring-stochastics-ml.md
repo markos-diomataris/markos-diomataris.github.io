@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/2024-spring-stochastics-ml
 venue: "ETH Zurich, Department of Computer Science"
-date: 2024-01-01
+date: 2025-01-01
 location: "Zurich, Switzerland"
 ---
 
@@ -46,4 +46,3 @@ Course Details
 * **Instructors**: Carlos Cotrini Jimenez, Patrick Cheridito
 * **Semester**: Spring 2025
 * **Level**: Undergraduate
-* **Video Lectures**: Available on [ETH Video Portal](https://video.ethz.ch/lectures/d-infk/2024/spring/252-0870-00L)

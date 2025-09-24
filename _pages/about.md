@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm passionate about developing **intelligent virtual humans** and advancing **motion synthesis** through the intersection of machine learning, computer vision, and robotics.
+What does it take to create avatars that move and behave like real humans? My research focuses on building models and methods that try to answer this question. I want to create human avatars that not only move like us but also sense the world and learn from their experience like us. I combine data driven methods along with reinforcement learning paradigms in an effort to create agents that are able to learn human behaviors that go beyond what can be learned from the available datasets.
 
 ## Featured Research
 
